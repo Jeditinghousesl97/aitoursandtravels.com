@@ -1,0 +1,14 @@
+Options -Indexes
+
+# Block PHP execution by remapping .php files to plain text
+<FilesMatch "\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Ensure correct MIME types for uploaded videos
+<IfModule mod_mime.c>
+    AddType video/mp4  .mp4
+    AddType video/webm .webm
+    AddType video/ogg  .ogg
+</IfModule>

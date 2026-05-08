@@ -1,0 +1,137 @@
+.services-section {
+    background: linear-gradient(180deg, #F0F9FF 0%, #E8F4FD 100%);
+    position: relative;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+/* Card  */
+.service-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 42px 30px 36px;
+    border: 1px solid rgba(0,119,182,0.1);
+    box-shadow: 0 4px 24px rgba(0,119,182,0.07);
+    transition: var(--ease-slow);
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Decorative top gradient bar — always visible, animates width */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--grad-primary);
+    border-radius: 0 0 4px 4px;
+    transition: width 0.4s ease;
+}
+
+/* Subtle watermark number */
+.service-card::after {
+    content: attr(data-num);
+    position: absolute;
+    bottom: 6px;
+    right: 14px;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(0,119,182,0.04);
+    font-family: var(--font-heading);
+    line-height: 1;
+    pointer-events: none;
+    transition: color 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,119,182,0.16);
+    border-color: rgba(0,119,182,0.15);
+}
+
+.service-card:hover::before {
+    width: 100%;
+}
+
+.service-card:hover::after {
+    color: rgba(0,119,182,0.07);
+}
+
+/* Icon */
+.service-icon {
+    width: 76px;
+    height: 76px;
+    background: var(--grad-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: var(--white);
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(0,119,182,0.30);
+    transition: var(--ease-slow);
+    flex-shrink: 0;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.12) rotate(-6deg);
+    box-shadow: 0 12px 32px rgba(0,119,182,0.40);
+}
+
+/* Content */
+.service-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    font-size: 0.91rem;
+    color: var(--text-light);
+    line-height: 1.75;
+    margin-bottom: 22px;
+    flex: 1;
+}
+
+.service-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border: 2px solid rgba(0,119,182,0.2);
+    border-radius: var(--radius-pill);
+    transition: var(--ease);
+    background: rgba(0,119,182,0.04);
+}
+
+.service-link i {
+    font-size: 0.75rem;
+    transition: transform 0.3s;
+}
+
+.service-link:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.service-link:hover i {
+    transform: translateX(4px);
+}
+

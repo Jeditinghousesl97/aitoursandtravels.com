@@ -1,0 +1,88 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand Column -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <span class="logo-name">ASB Tours</span>
+                </div>
+                <p>We craft unforgettable travel experiences tailored to every type of adventurer. From tropical beaches to mountain peaks, your perfect journey begins with us.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{{BASE}}index.html"><i class="fa fa-chevron-right"></i> Home</a></li>
+                    <li><a href="{{BASE}}index.html#about"><i class="fa fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="{{BASE}}pages/packages.html"><i class="fa fa-chevron-right"></i> Packages</a></li>
+                    <li><a href="{{BASE}}pages/gallery.html"><i class="fa fa-chevron-right"></i> Gallery</a></li>
+                    <li><a href="{{BASE}}pages/blog.html"><i class="fa fa-chevron-right"></i> Destinations</a></li>
+                    <li><a href="{{BASE}}index.html#contact"><i class="fa fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="{{BASE}}pages/services.html"><i class="fa fa-chevron-right"></i> Flight Booking</a></li>
+                    <li><a href="{{BASE}}pages/services.html"><i class="fa fa-chevron-right"></i> Hotel Booking</a></li>
+                    <li><a href="{{BASE}}pages/services.html"><i class="fa fa-chevron-right"></i> Tour Guides</a></li>
+                    <li><a href="{{BASE}}pages/services.html"><i class="fa fa-chevron-right"></i> Visa Assistance</a></li>
+                    <li><a href="{{BASE}}pages/services.html"><i class="fa fa-chevron-right"></i> Airport Transfer</a></li>
+                    <li><a href="{{BASE}}pages/services.html"><i class="fa fa-chevron-right"></i> Group Tours</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <div class="footer-contact-item">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <span>123 Tourism Street, Travel City,<br>Adventure State, 12345</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa fa-phone"></i>
+                    <span>+1 (555) 000-1234<br>+1 (555) 000-5678</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa fa-envelope"></i>
+                    <span>info@asbtours.com<br>bookings@asbtours.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa fa-clock"></i>
+                    <span>Mon–Sat: 9AM – 6PM<br>Sunday: 10AM – 2PM</span>
+                </div>
+            </div>
+
+        </div><!-- /footer-grid -->
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <p>&copy; <span id="footerYear"></span> <span>ASB Tours</span>. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>

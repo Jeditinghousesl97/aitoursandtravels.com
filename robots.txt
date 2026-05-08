@@ -1,0 +1,23 @@
+User-agent: *
+
+# Block admin area
+Disallow: /admin/
+
+# Block form handlers
+Disallow: /submit-booking.php
+Disallow: /submit-inquiry.php
+
+# Block config and internal includes
+Disallow: /assets/php/
+Disallow: /database/
+
+# Block maintenance page
+Disallow: /maintenance.php
+
+# Allow all public pages and assets
+Allow: /pages/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/images/
+
+Sitemap: https://asbtours.com/sitemap.xml

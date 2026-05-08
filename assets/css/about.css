@@ -1,0 +1,121 @@
+.about-section { background: var(--white); }
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+/* Image Side */
+.about-image {
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.about-badge {
+    position: absolute;
+    bottom: 35px;
+    right: -20px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 20px 26px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    min-width: 130px;
+}
+
+.badge-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.badge-text {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 4px;
+    line-height: 1.3;
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: -18px;
+    right: 18px;
+    bottom: -18px;
+    border: 3px solid var(--accent);
+    border-radius: var(--radius-lg);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Content Side */
+.about-content { }
+
+.about-content p {
+    color: var(--text-light);
+    font-size: 0.975rem;
+    margin-bottom: 18px;
+    line-height: 1.8;
+}
+
+.about-content .btn {
+    margin-top: 10px;
+}
+
+/* Stats */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 36px 0;
+    padding: 28px 22px;
+    background: var(--light);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.stat-item {
+    text-align: center;
+    padding: 6px 0;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: inline-block;
+    line-height: 1;
+}
+
+.stat-plus {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

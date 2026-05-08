@@ -1,0 +1,57 @@
+:root {
+    /* Brand Colors */
+    --primary:        #0077B6;
+    --primary-dark:   #005F92;
+    --primary-light:  #00B4D8;
+    --secondary:      #00B4D8;
+    --accent:         #ADE8F4;
+    --dark:           #03045E;
+    --dark-2:         #023E8A;
+    --dark-3:         #0A1628;
+
+    /* UI Colors */
+    --light:          #F0F9FF;
+    --light-2:        #E8F4FD;
+    --white:          #FFFFFF;
+    --text:           #2D3748;
+    --text-light:     #718096;
+    --text-muted:     #A0AEC0;
+    --border:         #E2E8F0;
+
+    /* Gradients  */
+    --grad-primary:   linear-gradient(135deg, #0077B6 0%, #00B4D8 100%);
+    --grad-dark:      linear-gradient(135deg, #03045E 0%, #023E8A 100%);
+    --grad-hero:      linear-gradient(to bottom, rgba(3,4,94,0.55) 0%, rgba(0,119,182,0.35) 100%);
+
+    /* Typography  */
+    --font-heading:   'Playfair Display', serif;
+    --font-body:      'Poppins', sans-serif;
+
+    /* Spacing */
+    --section-py:     90px;
+    --container:      1200px;
+    --gap:            30px;
+
+    /* Shadows */
+    --shadow-xs:      0 1px 4px rgba(0,119,182,0.08);
+    --shadow-sm:      0 2px 12px rgba(0,119,182,0.10);
+    --shadow-md:      0 6px 28px rgba(0,119,182,0.14);
+    --shadow-lg:      0 12px 45px rgba(0,119,182,0.18);
+    --shadow-card:    0 4px 20px rgba(0,0,0,0.08);
+
+    /* Border Radius */
+    --radius-xs:      4px;
+    --radius-sm:      8px;
+    --radius-md:      14px;
+    --radius-lg:      22px;
+    --radius-xl:      32px;
+    --radius-pill:    999px;
+
+    /* Transitions */
+    --ease:           all 0.3s ease;
+    --ease-slow:      all 0.5s ease;
+
+    /* Navbar */
+    --topbar-height:  40px;
+    --nav-height:     80px;
+}

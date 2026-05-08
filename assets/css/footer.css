@@ -1,0 +1,196 @@
+.footer {
+    background: var(--dark-3);
+    color: rgba(255,255,255,0.75);
+    padding-top: 70px;
+}
+
+/* Main Grid  */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 45px;
+    padding-bottom: 55px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Footer Brand */
+.footer-brand { }
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.footer-logo .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--grad-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.footer-logo .logo-name {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 22px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.footer-social a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: var(--ease);
+}
+
+.footer-social a:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.footer-social .footer-tripadvisor-link {
+    width: auto;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+}
+
+.footer-social .footer-tripadvisor-link:hover {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.22);
+}
+
+.footer-tripadvisor-logo {
+    display: block;
+    height: 18px;
+    width: auto;
+    max-width: 110px;
+    object-fit: contain;
+}
+
+/* Footer Column */
+.footer-col h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+}
+
+.footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.footer-col ul li a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--ease);
+}
+
+.footer-col ul li a i {
+    font-size: 0.7rem;
+    color: var(--secondary);
+}
+
+.footer-col ul li a:hover {
+    color: var(--white);
+    padding-left: 4px;
+}
+
+/* Contact Items */
+.footer-contact-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.footer-contact-item i {
+    color: var(--secondary);
+    margin-top: 3px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.footer-contact-item span {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+}
+
+.footer-bottom p span {
+    color: var(--secondary);
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    transition: var(--ease);
+}
+
+.footer-bottom-links a:hover {
+    color: var(--secondary);
+}
+
+.footer-bottom p a {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.footer-bottom p a:hover {
+    color: var(--accent);
+}

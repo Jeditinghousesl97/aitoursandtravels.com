@@ -1,0 +1,180 @@
+/* Large Desktop (1400px+) */
+@media (min-width: 1400px) {
+    :root { --container: 1320px; }
+}
+
+/* Tablet Landscape / Small Desktop (max 1100px) */
+@media (max-width: 1100px) {
+    .about-grid        { gap: 45px; }
+    .services-grid     { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid       { grid-template-columns: 1fr 1fr; gap: 38px; }
+    .custom-tour-grid  { gap: 40px; }
+}
+
+/* Tablet (max 991px) */
+@media (max-width: 991px) {
+    :root { --section-py: 70px; }
+
+    /* Topbar — hide on tablet/mobile */
+    .topbar { display: none; }
+    .navbar { top: 0; }
+
+    /* Navbar */
+    .nav-menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--dark);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 16px 0 24px;
+        transform: translateY(-110%);
+        opacity: 0;
+        transition: transform 0.35s ease, opacity 0.35s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        z-index: 999;
+    }
+
+    .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .nav-link {
+        padding: 14px 28px;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        font-size: 1rem;
+    }
+
+    .nav-link::after { display: none; }
+
+    .hamburger { display: flex; }
+
+    .nav-btn { display: none; }
+
+    /* Hero */
+    .hero-content h1 { font-size: 2.2rem; }
+
+    /* About */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .about-image img { height: 420px; }
+    .about-badge { right: 20px; }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Services */
+    .services-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+    /* Custom Tour */
+    .custom-tour-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* Contact */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-form-wrap {
+        padding: 30px 26px;
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+    }
+}
+
+/* Gallery responsive */
+@media (max-width: 991px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:first-child { grid-row: span 1; }
+    .gallery-item:first-child img { min-height: 200px; }
+}
+
+/* Mobile Large (max 767px) */
+@media (max-width: 767px) {
+    :root { --section-py: 60px; }
+
+    .container { padding: 0 18px; }
+
+    /* Section Header */
+    .section-header { margin-bottom: 40px; }
+
+    /* Hero */
+    .hero-content { max-width: 100%; }
+    .hero-content h1 { font-size: 1.9rem; }
+    .hero-btns { flex-direction: column; gap: 12px; }
+    .hero-btns .btn { text-align: center; justify-content: center; }
+    .hero-next, .hero-prev { display: none; }
+
+    /* About */
+    .about-image img { height: 320px; }
+    .about-badge { right: 10px; bottom: 20px; }
+    .about-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+    /* Services */
+    .services-grid { grid-template-columns: 1fr; gap: 18px; }
+
+    /* Packages / Destinations arrows */
+    .packages-next, .packages-prev,
+    .destinations-next, .destinations-prev { display: none; }
+
+    /* Gallery */
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Custom Tour Form */
+    .custom-tour-form { padding: 26px 22px; }
+    .form-row { grid-template-columns: 1fr; }
+
+    /* Contact */
+    .contact-form-wrap { padding: 26px 20px; }
+    .form-row { grid-template-columns: 1fr; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* WhatsApp & Back to Top */
+    .whatsapp-float { width: 52px; height: 52px; font-size: 1.4rem; right: 18px; bottom: 18px; }
+    .back-to-top { width: 44px; height: 44px; left: 18px; bottom: 18px; }
+}
+
+/* Mobile Small (max 480px) */
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 1.65rem; }
+
+    .hero-badge {
+        font-size: 0.72rem;
+        padding: 5px 14px;
+    }
+
+    .stat-number { font-size: 1.6rem; }
+
+    .package-highlights { flex-direction: column; gap: 6px; }
+
+    .contact-social { gap: 8px; }
+
+    .footer-bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .section-title { font-size: 1.6rem; }
+}
