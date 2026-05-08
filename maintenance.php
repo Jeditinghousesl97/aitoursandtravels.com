@@ -11,7 +11,7 @@ $message = file_exists(__DIR__ . '/maintenance.flag')
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Under Maintenance | ASB Tours</title>
+  <title>Under Maintenance </title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,7 +58,7 @@ $message = file_exists(__DIR__ . '/maintenance.flag')
     <h1>Under Maintenance</h1>
     <p><?= nl2br(htmlspecialchars($message)) ?></p>
     <div class="brand">
-      <strong>ASB Tours</strong> - We'll be back soon
+      <strong>Please Wait</strong> - We'll be back soon
     </div>
   </div>
 </body>
