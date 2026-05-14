@@ -23,7 +23,7 @@ function navItem(string $href, string $icon, string $label, string $dir, int $ba
 ?>
 <aside class="admin-sidebar" id="adminSidebar">
   <div class="sidebar-brand">
-    <i class="bi bi-compass me-2"></i>ASB Tours
+    <i class="bi bi-compass me-2"></i>AI Tours and Travels
   </div>
   <ul class="nav flex-column px-2 mt-2">
     <li class="nav-item">

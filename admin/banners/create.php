@@ -85,15 +85,15 @@ include __DIR__ . '/../includes/header.php';
             <label class="form-label">Hero Badge Text <small class="text-muted">(optional)</small></label>
             <input type="text" name="badge_text" class="form-control"
                    value="<?= htmlspecialchars($_POST['badge_text'] ?? '') ?>"
-                   placeholder="e.g. Welcome to ASB Tours">
+                   placeholder="e.g. Welcome to AI Tours and Travels">
             <div class="form-text">Small text shown above the main heading on this slide.</div>
           </div>
           <div class="mb-3">
             <label class="form-label">Heading <span class="text-danger">*</span></label>
             <input type="text" name="heading" class="form-control"
                    value="<?= htmlspecialchars($_POST['heading'] ?? '') ?>"
-                   placeholder="e.g. Discover the Pearl of | the Indian Ocean" required>
-            <div class="form-text">Use <code>|</code> to split into two colours — text before <code>|</code> is white, text after is the accent colour. Example: <em>Discover the Pearl of | the Indian Ocean</em></div>
+                   placeholder="e.g. Explore the Pearl of | the Indian Ocean" required>
+            <div class="form-text">Use <code>|</code> to split into two colours — text before <code>|</code> is white, text after is the accent colour. Example: <em>Explore the Pearl of | the Indian Ocean</em></div>
           </div>
           <div class="mb-3">
             <label class="form-label">Subheading <small class="text-muted">(optional)</small></label>

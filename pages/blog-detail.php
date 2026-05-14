@@ -72,7 +72,7 @@ if (!$useStatic) {
             }
         }
     }
-    $pageTitle = htmlspecialchars($post['title']) . ' | ASB Tours Blog';
+    $pageTitle = htmlspecialchars($post['title']) . ' | AI Tours and Travels Blog';
     $metaDesc  = htmlspecialchars($post['excerpt'] ?? substr(strip_tags($post['content'] ?? ''), 0, 160));
 
     // Related posts (same category, exclude self, limit 3)
@@ -88,7 +88,7 @@ if (!$useStatic) {
         $relatedPosts = array_merge($relatedPosts, $fill->fetchAll());
     }
 } else {
-    $pageTitle = 'The Ultimate Sri Lanka Travel Guide 2026 | ASB Tours Blog';
+    $pageTitle = 'The Ultimate Sri Lanka Travel Guide 2026 | AI Tours and Travels Blog';
     $metaDesc  = 'The Ultimate Sri Lanka Travel Guide 2026, Best time to visit, top destinations, visa info, budget tips, food guide, and everything you need to plan the perfect trip.';
     $heroImg   = 'assets/images/packages/cultural-triangle.jpg';
     $pubDate   = 'March 15, 2026';
@@ -126,7 +126,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
         'canonical' => $seoCanonical,
         'image' => $seoImage,
         'type' => 'article',
-        'site_name' => $cfg('site_name', 'ASB Tours'),
+        'site_name' => $cfg('site_name', 'AI Tours and Travels'),
         'structured_data' => [[
             '@context' => 'https://schema.org',
             '@type' => 'BlogPosting',
@@ -138,11 +138,11 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
             'mainEntityOfPage' => $seoCanonical,
             'author' => [
                 '@type' => 'Organization',
-                'name' => $cfg('site_name', 'ASB Tours'),
+                'name' => $cfg('site_name', 'AI Tours and Travels'),
             ],
             'publisher' => [
                 '@type' => 'Organization',
-                'name' => $cfg('site_name', 'ASB Tours'),
+                'name' => $cfg('site_name', 'AI Tours and Travels'),
                 'logo' => [
                     '@type' => 'ImageObject',
                     'url' => absolute_site_url($cfg('site_logo', '') ?: 'assets/images/logo.png'),
@@ -186,8 +186,8 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
             <div class="article-hero-author">
                 <div class="author-avatar"><?= $useStatic ? 'DK' : strtoupper(substr($cfg('about_company_name','NT'),0,2)) ?></div>
                 <div>
-                    <span class="author-name"><?= $useStatic ? 'Dinesh Kumara' : htmlspecialchars($cfg('about_company_name','ASB Tours')) ?></span>
-                    <span class="author-role"><?= $useStatic ? 'Head of Travel, ASB Tours' : 'ASB Tours Team' ?></span>
+                    <span class="author-name"><?= $useStatic ? 'Dinesh Kumara' : htmlspecialchars($cfg('about_company_name','AI Tours and Travels')) ?></span>
+                    <span class="author-role"><?= $useStatic ? 'Head of Travel, AI Tours and Travels' : 'AI Tours and Travels Team' ?></span>
                 </div>
             </div>
         </div>
@@ -238,12 +238,12 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
                         <p>The <strong>Kandy to Ella train</strong> is consistently rated one of the world's most scenic rail journeys. Winding through emerald tea estates, misty mountains, and past waterfalls for 7 hours, it's an experience in itself.</p>
                         <img src="../assets/images/blog/ella.jpg" alt="Hill Country Tea Estates" class="article-img">
                         <p class="article-img-caption">The emerald tea estates of Sri Lanka's Hill Country, best seen from the train window between Kandy and Ella</p>
-                        <div class="pull-quote"><p>"Sri Lanka is like five countries in one, ancient ruins in the morning, tea estates at noon, and a beach sunset to end the day. I've been to 40+ countries and this is the one I keep returning to."</p><cite>— Sarah Mitchell, UK, ASB Tours guest, 2025</cite></div>
+                        <div class="pull-quote"><p>"Sri Lanka is like five countries in one, ancient ruins in the morning, tea estates at noon, and a beach sunset to end the day. I've been to 40+ countries and this is the one I keep returning to."</p><cite>— Sarah Mitchell, UK, AI Tours and Travels guest, 2025</cite></div>
 
                         <h2 id="section-3">3. Getting Around Sri Lanka</h2>
                         <p>Sri Lanka is a small country (roughly 430 km north to south) but roads can be slow. Here are your main transport options:</p>
                         <ul>
-                            <li><strong>Private A/C vehicle with driver:</strong> The most comfortable and flexible option, especially for families and couples. This is what all ASB Tours packages include.</li>
+                            <li><strong>Private A/C vehicle with driver:</strong> The most comfortable and flexible option, especially for families and couples. This is what all AI Tours and Travels packages include.</li>
                             <li><strong>Trains:</strong> Scenic and affordable but slow. Essential for the Kandy–Ella route.</li>
                             <li><strong>Tuk-tuks:</strong> Perfect for short distances within towns.</li>
                             <li><strong>Buses:</strong> Very cheap but crowded and slow.</li>
@@ -280,7 +280,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
                             <li><strong>Use your right hand</strong> for giving/receiving things and greeting.</li>
                             <li><strong>Bargaining is acceptable</strong> in markets and with tuk-tuk drivers, but not in restaurants.</li>
                         </ul>
-                        <div class="pull-quote"><p>"Sri Lanka gave us more warmth, more color, and more soul than we expected. The people are what make this island truly special."</p><cite>— Emma van den Berg, Netherlands, ASB Tours guest, 2025</cite></div>
+                        <div class="pull-quote"><p>"Sri Lanka gave us more warmth, more color, and more soul than we expected. The people are what make this island truly special."</p><cite>— Emma van den Berg, Netherlands, AI Tours and Travels guest, 2025</cite></div>
 
                         <h2 id="section-8">8. Essential Packing List</h2>
                         <div class="tip-box"><div class="tip-box-header"><i class="fa-solid fa-bag-shopping"></i> What to Pack</div><ul>
@@ -324,8 +324,8 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
                         <div class="author-bio-card">
                             <div class="author-bio-avatar"><?= $useStatic ? 'DK' : strtoupper(substr($cfg('about_company_name','NT'),0,2)) ?></div>
                             <div class="author-bio-text">
-                                <h4><?= $useStatic ? 'Dinesh Kumara' : htmlspecialchars($cfg('about_company_name','ASB Tours')) ?></h4>
-                                <span class="author-bio-role"><?= $useStatic ? 'Head of Travel, ASB Tours' : 'ASB Tours Team' ?></span>
+                                <h4><?= $useStatic ? 'Dinesh Kumara' : htmlspecialchars($cfg('about_company_name','AI Tours and Travels')) ?></h4>
+                                <span class="author-bio-role"><?= $useStatic ? 'Head of Travel, AI Tours and Travels' : 'AI Tours and Travels Team' ?></span>
                                 <p><?= htmlspecialchars($cfg('about_paragraph_1', 'Our team has been guiding travelers through Sri Lanka for over 10 years, sharing its culture, cuisine, and hidden gems with the world.')) ?></p>
                             </div>
                         </div>

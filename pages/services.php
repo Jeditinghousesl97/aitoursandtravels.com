@@ -27,7 +27,7 @@ $useStaticReviews = empty($reviews);
 
 // Settings defaults 
 $introHeading = $cfg('svc_intro_heading', "Sri Lanka's Most Trusted Travel Partner");
-$introText1   = $cfg('svc_intro_text1',   "At ASB Tours, we believe every journey should be effortless and extraordinary. With over a decade of experience crafting travel experiences across Sri Lanka, we've built our reputation on personalised service, deep local knowledge, and an unwavering commitment to making your trip truly unforgettable.");
+$introText1   = $cfg('svc_intro_text1',   "At AI Tours and Travels, we believe every journey should be effortless and extraordinary. With over a decade of experience crafting travel experiences across Sri Lanka, we've built our reputation on personalised service, deep local knowledge, and an unwavering commitment to making your trip truly unforgettable.");
 $introText2   = $cfg('svc_intro_text2',   "From the moment you contact us to the time you return home, our team is with you every step of the way, handling everything so you can simply focus on soaking in the beauty of Sri Lanka.");
 $ctaHeading   = $cfg('svc_cta_heading',   'Ready to Explore Sri Lanka?');
 $ctaText      = $cfg('svc_cta_text',      "Let our experts craft your perfect itinerary. Contact us today and get a free, no-obligation quote within 24 hours.");
@@ -63,7 +63,7 @@ for ($i = 1; $i <= 4; $i++) {
 $staticCoreServices = [
     ['icon_class'=>'fa-plane-departure','title'=>'Flight Booking',         'description'=>'Getting to Sri Lanka is the first step of your adventure, and we make it effortless. We search across hundreds of airlines and routes to find you the best fares to Bandaranaike International Airport (CMB) in Colombo. Whether you\'re flying from Europe, Asia, the Middle East, or Australia, our team handles every detail, including layovers, seat selection, and baggage allowances, so your journey begins perfectly.','features'=>"International & connecting flight search from 200+ airlines\nBest-fare guarantee with flexible date comparison\nEconomy, business, and first-class bookings\nSeat selection, meal preferences & special assistance\nE-ticket delivery and booking confirmation\nFlight change & cancellation support"],
     ['icon_class'=>'fa-hotel',          'title'=>'Hotel & Resort Booking',  'description'=>'Sri Lanka offers an extraordinary range of accommodation, from centuries-old colonial boutique hotels in Galle Fort to breathtaking cliff-top infinity pool resorts in Mirissa, lush tea-plantation bungalows in Ella, and intimate jungle lodges near Yala. We personally vet every property we recommend, ensuring quality, location, and value align perfectly with your expectations and budget.','features'=>"Curated selection from budget guesthouses to 5-star luxury\nBoutique colonial villas, beach resorts & eco-lodges\nBreakfast-included, half-board & all-inclusive options\nHoneymoon & suite upgrades available on request\nBest available rate, no booking fees\nPartner hotels: Cinnamon, Jetwing & Aitken Spence properties"],
-    ['icon_class'=>'fa-user-tie',       'title'=>'Expert Local Guides',    'description'=>'Our certified Sri Lankan guides are the heart of the ASB Tours experience. Trained in history, culture, wildlife, and geology, they bring Sigiriya\'s ancient frescoes, Kandy\'s sacred temples, Galle\'s colonial streets, and Yala\'s wildlife to vivid life. They don\'t just take you to the highlights, they reveal the hidden stories, the local legends, and the off-the-beaten-path gems.','features'=>"Certified by Sri Lanka Tourism & National Guide Association\nMultilingual guides, English, German, French, Mandarin & more\nSpecialist wildlife naturalists for safari & bird-watching\nCultural & heritage tour experts for UNESCO sites\nPrivate, small-group & large-group guide options\nLocal food, craft & culinary experience guided tours"],
+    ['icon_class'=>'fa-user-tie',       'title'=>'Expert Local Guides',    'description'=>'Our certified Sri Lankan guides are the heart of the AI Tours and Travels experience. Trained in history, culture, wildlife, and geology, they bring Sigiriya\'s ancient frescoes, Kandy\'s sacred temples, Galle\'s colonial streets, and Yala\'s wildlife to vivid life. They don\'t just take you to the highlights, they reveal the hidden stories, the local legends, and the off-the-beaten-path gems.','features'=>"Certified by Sri Lanka Tourism & National Guide Association\nMultilingual guides, English, German, French, Mandarin & more\nSpecialist wildlife naturalists for safari & bird-watching\nCultural & heritage tour experts for UNESCO sites\nPrivate, small-group & large-group guide options\nLocal food, craft & culinary experience guided tours"],
     ['icon_class'=>'fa-passport',       'title'=>'Visa Assistance',        'description'=>'Most visitors to Sri Lanka require an Electronic Travel Authorisation (ETA) obtained online before arrival. The process, while straightforward, can be confusing, especially around document requirements, photo specifications, and processing times. Our team guides you through every step, reviews your application before submission, and helps resolve any issues quickly.','features'=>"Step-by-step ETA application guidance\nDocument checklist & pre-submission review\nVisa-on-arrival assistance at Colombo airport\nVisa extension support for long-stay travelers\nMultiple-entry & business visa advisory\nEmergency visa support available 24/7"],
     ['icon_class'=>'fa-car-side',       'title'=>'Island-Wide Transfers',  'description'=>'Sri Lanka is a relatively small island but its diverse landscapes, from the central highlands to the southern coast, mean comfortable, well-timed transport is essential. We provide fully air-conditioned, modern vehicles with experienced, English-speaking drivers who know every road, shortcut, and scenic detour.','features'=>"Airport pickups & drop-offs, Colombo BIA, 24/7\nAir-conditioned cars, vans, minibuses & coaches\nColombo → Kandy → Ella → Mirissa & all routes\nEnglish-speaking, experienced professional drivers\nFlexible multi-day chauffeur-drive packages\nFlight & train connection monitoring for on-time pickup"],
     ['icon_class'=>'fa-people-group',   'title'=>'Group Tours',            'description'=>'Whether you\'re travelling with family, friends, colleagues, or a school group, our tailored group tour packages bring people together through shared Sri Lankan experiences. We manage all logistics, accommodation, transport, meals, activities, across groups of any size, ensuring everyone travels comfortably, safely, and with maximum enjoyment.','features'=>"Custom itineraries for families, corporates & schools\nGroups from 5 to 500+, all sizes welcome\nCultural, wildlife, beach & adventure group packages\nGroup accommodation & meal coordination\nDedicated group tour manager throughout\nSpecial group discounts from 10 travelers"],
@@ -89,8 +89,8 @@ $displayCore       = $useStaticCore       ? $staticCoreServices       : $coreSer
 $displayAdditional = $useStaticAdditional ? $staticAdditionalServices : $additionalServices;
 $displaySteps      = $useStaticSteps      ? $staticProcessSteps       : $processSteps;
 $delays            = [50, 100, 150, 200, 250, 300];
-$seoTitle = 'Our Services | ASB Tours Sri Lanka';
-$seoDesc = 'ASB Tours Services, Flight booking, hotel reservations, expert local guides, visa assistance, island-wide transfers and group tours across Sri Lanka.';
+$seoTitle = 'Our Services | AI Tours and Travels Sri Lanka';
+$seoDesc = 'AI Tours and Travels Services, Flight booking, hotel reservations, expert local guides, visa assistance, island-wide transfers and group tours across Sri Lanka.';
 $seoCanonical = absolute_site_url('pages/services.php');
 $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/logo.png');
 ?>
@@ -107,14 +107,14 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
         'canonical' => $seoCanonical,
         'image' => $seoImage,
         'type' => 'website',
-        'site_name' => $cfg('site_name', 'ASB Tours'),
+        'site_name' => $cfg('site_name', 'AI Tours and Travels'),
         'structured_data' => [[
             '@context' => 'https://schema.org',
             '@type' => 'Service',
             'serviceType' => 'Sri Lanka travel planning and tour services',
             'provider' => [
                 '@type' => 'TravelAgency',
-                'name' => $cfg('site_name', 'ASB Tours'),
+                'name' => $cfg('site_name', 'AI Tours and Travels'),
                 'url' => absolute_site_url('/'),
             ],
             'url' => $seoCanonical,
@@ -179,7 +179,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
 
                 <!-- Right: Image with floating badge -->
                 <div class="services-intro-image" data-aos="fade-left">
-                    <img src="../assets/images/destinations/sigiriya.jpg" alt="ASB Tours team in Sri Lanka">
+                    <img src="../assets/images/destinations/sigiriya.jpg" alt="AI Tours and Travels team in Sri Lanka">
                     <div class="intro-badge-float">
                         <div class="ibf-icon"><i class="fa-solid fa-trophy"></i></div>
                         <div class="ibf-text">
@@ -199,7 +199,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
             <div class="section-header" data-aos="fade-up">
                 <span class="section-label">WHAT WE OFFER</span>
                 <h2>Our Core Services</h2>
-                <p>The pillars of excellence that make every ASB Tours experience seamless and stress-free.</p>
+                <p>The pillars of excellence that make every AI Tours and Travels experience seamless and stress-free.</p>
             </div>
 
             <div class="services-detail-grid">
@@ -342,7 +342,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p>"Our honeymoon was absolutely perfect. Every detail was thoughtfully planned, the candlelit beach dinner, the tea estate bungalow, the whale watching. ASB Tours are magicians!"</p>
+                    <p>"Our honeymoon was absolutely perfect. Every detail was thoughtfully planned, the candlelit beach dinner, the tea estate bungalow, the whale watching. AI Tours and Travels are magicians!"</p>
                     <div class="mini-reviewer">
                         <div class="mini-avatar av-3">PS</div>
                         <div class="mini-reviewer-info">

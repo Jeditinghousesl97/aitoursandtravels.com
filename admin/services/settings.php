@@ -106,7 +106,7 @@ $s = loadSettings($pdo);
 // Defaults
 $defaults = [
     'svc_intro_heading' => "Sri Lanka's Most Trusted Travel Partner",
-    'svc_intro_text1'   => "At ASB Tours, we believe every journey should be effortless and extraordinary. With over a decade of experience crafting travel experiences across Sri Lanka, we've built our reputation on personalised service, deep local knowledge, and an unwavering commitment to making your trip truly unforgettable.",
+    'svc_intro_text1'   => "At AI Tours and Travels, we believe every journey should be effortless and extraordinary. With over a decade of experience crafting travel experiences across Sri Lanka, we've built our reputation on personalised service, deep local knowledge, and an unwavering commitment to making your trip truly unforgettable.",
     'svc_intro_text2'   => "From the moment you contact us to the time you return home, our team is with you every step of the way, handling everything so you can simply focus on soaking in the beauty of Sri Lanka.",
     'svc_badge1_icon'   => 'fa-certificate',
     'svc_badge1_title'  => 'Licensed & Certified Tour Operator',

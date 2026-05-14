@@ -69,7 +69,7 @@ $staticFeatured = [
     'published_at' => '2026-03-15',
     'content'      => str_repeat('word ', 2400), // ~12 min
     'author'       => 'Dinesh Kumara',
-    'author_role'  => 'Head of Travel, ASB Tours',
+    'author_role'  => 'Head of Travel, AI Tours and Travels',
     'author_init'  => 'DK',
     'views'        => '8,420',
 ];
@@ -84,8 +84,8 @@ $staticPosts = [
     ['title'=>'Best Time to Visit Sri Lanka: A Month-by-Month Weather Guide','slug'=>null,'excerpt'=>'Sri Lanka has two monsoon seasons affecting different coasts. Here\'s exactly when to visit each region.','cover_image'=>'../assets/images/destinations/kandy.jpg','category'=>'tips','published_at'=>'2025-11-25','content'=>str_repeat('word ',1400),'views'=>'8,300'],
     ['title'=>'Ella, Sri Lanka: Complete Guide to the Island\'s Most Charming Hill Town','slug'=>null,'excerpt'=>'Nine Arches Bridge, Ella Rock hike, Little Adam\'s Peak, tea factory tours, and the freshest air in Sri Lanka.','cover_image'=>'../assets/images/destinations/ella.jpg','category'=>'destinations','published_at'=>'2025-11-10','content'=>str_repeat('word ',1800),'views'=>'6,100'],
 ];
-$seoTitle = 'Travel Blog | ASB Tours Sri Lanka';
-$seoDesc = $cfg('blog_meta_desc','ASB Tours Sri Lanka Blog, Travel tips, destination guides, food culture, visa planning, and honeymoon ideas for your perfect Sri Lanka trip.');
+$seoTitle = 'Travel Blog | AI Tours and Travels Sri Lanka';
+$seoDesc = $cfg('blog_meta_desc','AI Tours and Travels Sri Lanka Blog, Travel tips, destination guides, food culture, visa planning, and honeymoon ideas for your perfect Sri Lanka trip.');
 $seoCanonical = absolute_site_url('pages/blog.php' . (($activeCat !== 'all' || $page > 1) ? ('?' . http_build_query(array_filter(['cat' => $activeCat === 'all' ? null : $activeCat, 'page' => $page > 1 ? $page : null]))) : ''));
 $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/logo.png');
 ?>
@@ -102,11 +102,11 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
         'canonical' => $seoCanonical,
         'image' => $seoImage,
         'type' => 'website',
-        'site_name' => $cfg('site_name', 'ASB Tours'),
+        'site_name' => $cfg('site_name', 'AI Tours and Travels'),
         'structured_data' => [[
             '@context' => 'https://schema.org',
             '@type' => 'Blog',
-            'name' => 'ASB Tours Travel Blog',
+            'name' => 'AI Tours and Travels Travel Blog',
             'url' => $seoCanonical,
             'description' => $seoDesc,
         ]],
@@ -180,7 +180,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
                             <div class="author-avatar">DK</div>
                             <div class="author-info">
                                 <span class="author-name">Dinesh Kumara</span>
-                                <span class="author-role">Head of Travel, ASB Tours</span>
+                                <span class="author-role">Head of Travel, AI Tours and Travels</span>
                             </div>
                         </div>
                         <a href="blog-detail.php" class="read-more-btn">
@@ -223,8 +223,8 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
                         <div class="blog-author">
                             <div class="author-avatar"><?= $fInitials ?></div>
                             <div class="author-info">
-                                <span class="author-name"><?= htmlspecialchars($cfg('about_company_name','ASB Tours')) ?></span>
-                                <span class="author-role">ASB Tours Team</span>
+                                <span class="author-name"><?= htmlspecialchars($cfg('about_company_name','AI Tours and Travels')) ?></span>
+                                <span class="author-role">AI Tours and Travels Team</span>
                             </div>
                         </div>
                         <a href="blog-detail.php?slug=<?= urlencode($featuredPost['slug']) ?>" class="read-more-btn">

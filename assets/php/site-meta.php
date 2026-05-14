@@ -46,7 +46,7 @@ if (preg_match('/\.svg$/i', $faviconPath)) {
     <meta name="msapplication-TileImage" content="<?= htmlspecialchars(absolute_site_url($siteFavicon)) ?>">
     <?php endif; ?>
     <meta name="site-logo" content="<?= htmlspecialchars($siteLogo) ?>">
-    <meta name="site-name" content="<?= htmlspecialchars($cfg('site_name', 'ASB Tours')) ?>">
+    <meta name="site-name" content="<?= htmlspecialchars($cfg('site_name', 'AI Tours and Travels')) ?>">
     <meta name="site-tagline" content="<?= htmlspecialchars($cfg('site_tagline', 'Come as a guest - Leave as a friend.')) ?>">
     <meta name="wa-number" content="<?= preg_replace('/\D/', '', $cfg('contact_whatsapp', '')) ?>">
     <meta name="site-phone" content="<?= htmlspecialchars($cfg('contact_phone', '')) ?>">

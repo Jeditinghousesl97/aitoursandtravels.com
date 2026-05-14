@@ -7,8 +7,8 @@ $pdo = getPDO();
 $settings = $pdo->query("SELECT `key`, `value` FROM settings")->fetchAll(PDO::FETCH_KEY_PAIR);
 $whatsAppNumber = preg_replace('/\D/', '', (string)($settings['contact_whatsapp'] ?? ''));
 
-$title = 'Page Not Found | ASB Tours Sri Lanka';
-$description = 'The page you are looking for could not be found. Explore ASB Tours Sri Lanka packages, services, blog, and gallery instead.';
+$title = 'Page Not Found | AI Tours and Travels Sri Lanka';
+$description = 'The page you are looking for could not be found. Explore AI Tours and Travels Sri Lanka packages, services, blog, and gallery instead.';
 $canonical = absolute_site_url('404.php');
 $image = 'assets/images/logo.png';
 
@@ -80,7 +80,7 @@ require_once __DIR__ . '/assets/php/seo.php';
         <section class="card">
             <span class="eyebrow">404 Error</span>
             <h1>That page has moved or no longer exists.</h1>
-            <p>The URL you opened does not match a live page on ASB Tours. You can head back to the homepage or jump straight into our Sri Lanka packages.</p>
+            <p>The URL you opened does not match a live page on AI Tours and Travels. You can head back to the homepage or jump straight into our Sri Lanka packages.</p>
             <div class="actions">
                 <a class="btn btn-primary" href="<?= htmlspecialchars(site_url()) ?>">Back to Home</a>
                 <a class="btn btn-secondary" href="<?= htmlspecialchars(site_url('pages/packages.php')) ?>">View Packages</a>

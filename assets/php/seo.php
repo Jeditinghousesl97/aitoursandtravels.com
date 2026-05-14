@@ -8,7 +8,7 @@ if (!function_exists('nt_render_seo_tags')) {
         $image = trim((string)($data['image'] ?? ''));
         $type = trim((string)($data['type'] ?? 'website'));
         $robots = trim((string)($data['robots'] ?? 'index,follow'));
-        $siteName = trim((string)($data['site_name'] ?? 'ASB Tours'));
+        $siteName = trim((string)($data['site_name'] ?? 'AI Tours and Travels'));
         $twitterCard = trim((string)($data['twitter_card'] ?? 'summary_large_image'));
         $structuredData = $data['structured_data'] ?? [];
 

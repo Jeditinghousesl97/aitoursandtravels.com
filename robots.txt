@@ -20,4 +20,4 @@ Allow: /assets/css/
 Allow: /assets/js/
 Allow: /assets/images/
 
-Sitemap: https://asbtours.com/sitemap.xml
+Sitemap: https://aitoursandtravels.com/sitemap.xml

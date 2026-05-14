@@ -46,7 +46,7 @@ $badgeClass  = ['popular' => 'badge-popular', 'bestseller' => 'badge-bestseller'
 $difficulty  = ucfirst($pkg['difficulty'] ?? 'Moderate');
 $rating      = $pkg['rating'] ? number_format((float)$pkg['rating'], 1) : null;
 $reviewCount = (int)($pkg['review_count'] ?? 0);
-$seoTitle = $title . ' | ASB Tours Sri Lanka';
+$seoTitle = $title . ' | AI Tours and Travels Sri Lanka';
 $plainDescription = trim(preg_replace('/\s+/', ' ', strip_tags((string)($pkg['description'] ?? ''))) ?? '');
 $seoDesc = $title . ', ' . ($pkg['duration'] ? $pkg['duration'] . ' Sri Lanka tour.' : 'Sri Lanka tour package.') . ($price ? ' From $' . $price . ' per person.' : '');
 $seoCanonical = absolute_site_url('pages/package-detail.php?slug=' . rawurlencode($slug));
@@ -105,7 +105,7 @@ if (!empty($itineraryItems)) {
         'canonical' => $seoCanonical,
         'image' => $seoImage,
         'type' => 'product',
-        'site_name' => $cfg('site_name', 'ASB Tours'),
+        'site_name' => $cfg('site_name', 'AI Tours and Travels'),
         'structured_data' => [[
             '@context' => 'https://schema.org',
             '@type' => 'TouristTrip',

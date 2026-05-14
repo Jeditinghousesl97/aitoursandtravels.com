@@ -6,8 +6,8 @@ if (file_exists(__DIR__ . '/../maintenance.flag')) { include __DIR__ . '/../main
 
 $s   = $pdo->query("SELECT `key`, `value` FROM settings")->fetchAll(PDO::FETCH_KEY_PAIR);
 $cfg = fn(string $key, string $default = '') => (isset($s[$key]) && $s[$key] !== '') ? $s[$key] : $default;
-$seoTitle = 'Privacy Policy | ASB Tours Sri Lanka';
-$seoDesc = 'Privacy Policy for ASB Tours Sri Lanka. Learn how we collect, use, and protect your personal information.';
+$seoTitle = 'Privacy Policy | AI Tours and Travels Sri Lanka';
+$seoDesc = 'Privacy Policy for AI Tours and Travels Sri Lanka. Learn how we collect, use, and protect your personal information.';
 $seoCanonical = absolute_site_url('pages/privacy-policy.php');
 $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/logo.png');
 ?>
@@ -24,7 +24,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
         'canonical' => $seoCanonical,
         'image' => $seoImage,
         'type' => 'website',
-        'site_name' => $cfg('site_name', 'ASB Tours'),
+        'site_name' => $cfg('site_name', 'AI Tours and Travels'),
     ]); ?>
     <title><?= htmlspecialchars($seoTitle) ?></title>    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,7 +80,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
 
     <div class="policy-body">
 
-        <p>Welcome to <strong>ASB Tours</strong>. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
+        <p>Welcome to <strong>AI Tours and Travels</strong>. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
 
         <h2>1. Information We Collect</h2>
         <p>We may collect personal information that you voluntarily provide to us when you:</p>
@@ -112,7 +112,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
         <p>Our website uses cookies to enhance your browsing experience. For full details, please see our <a href="cookie-policy.php">Cookie Policy</a>.</p>
 
         <h2>6. Your Rights</h2>
-        <p>You have the right to access, correct, or delete the personal information we hold about you. To exercise any of these rights, please contact us at <a href="mailto:<?= htmlspecialchars($cfg('contact_email', 'info@asbtours.com')) ?>"><?= htmlspecialchars($cfg('contact_email', 'info@asbtours.com')) ?></a>.</p>
+        <p>You have the right to access, correct, or delete the personal information we hold about you. To exercise any of these rights, please contact us at <a href="mailto:<?= htmlspecialchars($cfg('contact_email', 'info@aitoursandtravels.com')) ?>"><?= htmlspecialchars($cfg('contact_email', 'info@aitoursandtravels.com')) ?></a>.</p>
 
         <h2>7. Third-Party Links</h2>
         <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of those sites and encourage you to review their privacy policies.</p>
@@ -123,8 +123,8 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
         <h2>9. Contact Us</h2>
         <p>If you have any questions about this Privacy Policy, please contact us:</p>
         <ul>
-            <li><strong>Email:</strong> <a href="mailto:<?= htmlspecialchars($cfg('contact_email', 'info@asbtours.com')) ?>"><?= htmlspecialchars($cfg('contact_email', 'info@asbtours.com')) ?></a></li>
-            <li><strong>Phone:</strong> <?= htmlspecialchars($cfg('contact_phone', '+94 11 234 5678')) ?></li>
+            <li><strong>Email:</strong> <a href="mailto:<?= htmlspecialchars($cfg('contact_email', 'info@aitoursandtravels.com')) ?>"><?= htmlspecialchars($cfg('contact_email', 'info@aitoursandtravels.com')) ?></a></li>
+            <li><strong>Phone:</strong> <?= htmlspecialchars($cfg('contact_phone', '+94777518937')) ?></li>
             <li><strong>Address:</strong> <?= htmlspecialchars($cfg('contact_address', 'No. 15, Galle Road, Colombo 03, Sri Lanka')) ?></li>
         </ul>
 

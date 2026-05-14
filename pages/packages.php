@@ -97,8 +97,8 @@ foreach ($packages as $p) {
     }
     $categoryCounts[$normalized] = ($categoryCounts[$normalized] ?? 0) + 1;
 }
-$seoTitle = 'Tour Packages | ASB Tours Sri Lanka';
-$seoDesc = 'ASB Tours Sri Lanka Packages, Cultural, Beach, Wildlife, Hill Country & Honeymoon packages. Book your perfect Sri Lanka tour today.';
+$seoTitle = 'Tour Packages | AI Tours and Travels Sri Lanka';
+$seoDesc = 'AI Tours and Travels Sri Lanka Packages, Cultural, Beach, Wildlife, Hill Country & Honeymoon packages. Book your perfect Sri Lanka tour today.';
 $seoCanonical = absolute_site_url('pages/packages.php');
 $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/logo.png');
 ?>
@@ -115,7 +115,7 @@ $seoImage = $cfg('seo_image', '') ?: ($cfg('site_logo', '') ?: 'assets/images/lo
         'canonical' => $seoCanonical,
         'image' => $seoImage,
         'type' => 'website',
-        'site_name' => $cfg('site_name', 'ASB Tours'),
+        'site_name' => $cfg('site_name', 'AI Tours and Travels'),
         'structured_data' => [[
             '@context' => 'https://schema.org',
             '@type' => 'CollectionPage',

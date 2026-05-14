@@ -94,7 +94,7 @@ include __DIR__ . '/../includes/header.php';
             <label class="form-label">Hero Badge Text <small class="text-muted">(optional)</small></label>
             <input type="text" name="badge_text" class="form-control"
                    value="<?= htmlspecialchars($banner['badge_text'] ?? '') ?>"
-                   placeholder="e.g. Welcome to ASB Tours">
+                   placeholder="e.g. Welcome to AI Tours and Travels">
             <div class="form-text">Small text shown above the main heading on this slide.</div>
           </div>
           <div class="mb-3">
