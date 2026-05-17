@@ -152,7 +152,7 @@ $seoSchemas = [
                      <?= $mediaType === 'image' ? "style=\"background-image: url('" . htmlspecialchars($b['image_path'] ? site_url($b['image_path']) : 'assets/images/hero/slide-1.jpg') . "')\"" : '' ?>>
                     <?php if ($mediaType === 'video_upload' && !empty($b['video_path'])): ?>
                     <div class="hero-media">
-                        <video autoplay muted loop playsinline preload="none" poster="<?= htmlspecialchars($b['image_path'] ? site_url($b['image_path']) : 'assets/images/hero/slide-1.jpg') ?>">
+                        <video autoplay muted loop playsinline webkit-playsinline="true" preload="none" poster="<?= htmlspecialchars($b['image_path'] ? site_url($b['image_path']) : 'assets/images/hero/slide-1.jpg') ?>">
                             <source src="<?= htmlspecialchars(site_url($b['video_path'])) ?>">
                         </video>
                     </div>
