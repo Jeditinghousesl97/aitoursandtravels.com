@@ -22,6 +22,25 @@
     align-items: center;
 }
 
+.hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-media video,
+.hero-media iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+}
+
+.hero-media iframe {
+    pointer-events: none;
+}
+
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -170,4 +189,3 @@
     from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0); }
 }
-

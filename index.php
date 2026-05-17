@@ -19,6 +19,16 @@ $assetVersion = urlencode((string)($cfg('cache_busted_at', '') ?: '1'));
 // Hero banners
 $banners = $pdo->query("SELECT * FROM hero_banners WHERE is_active = 1 ORDER BY sort_order, id")->fetchAll();
 
+if (!function_exists('heroYouTubeId')) {
+    function heroYouTubeId(string $url): string
+    {
+        if (preg_match('~(?:youtu\.be/|[?&]v=|youtube\.com/embed/)([a-zA-Z0-9_-]{6,})~', $url, $m)) {
+            return $m[1];
+        }
+        return '';
+    }
+}
+
 // What We Offer: always pin featured packages first, then newest packages.
 $packages = $pdo->query("
     SELECT * FROM packages
@@ -137,8 +147,29 @@ $seoSchemas = [
             <?php if (!empty($banners)): ?>
                 <?php foreach ($banners as $index => $b): ?>
                 <?php $heroTag = $index === 0 ? 'h1' : 'h2'; ?>
+                <?php $mediaType = $b['media_type'] ?? 'image'; ?>
                 <div class="swiper-slide hero-slide"
-                     style="background-image: url('<?= htmlspecialchars($b['image_path'] ? site_url($b['image_path']) : 'assets/images/hero/slide-1.jpg') ?>')">
+                     <?= $mediaType === 'image' ? "style=\"background-image: url('" . htmlspecialchars($b['image_path'] ? site_url($b['image_path']) : 'assets/images/hero/slide-1.jpg') . "')\"" : '' ?>>
+                    <?php if ($mediaType === 'video_upload' && !empty($b['video_path'])): ?>
+                    <div class="hero-media">
+                        <video autoplay muted loop playsinline preload="metadata">
+                            <source src="<?= htmlspecialchars(site_url($b['video_path'])) ?>">
+                        </video>
+                    </div>
+                    <?php elseif ($mediaType === 'video_youtube' && !empty($b['youtube_url'])): ?>
+                    <?php $ytId = heroYouTubeId((string)$b['youtube_url']); ?>
+                    <?php if ($ytId !== ''): ?>
+                    <div class="hero-media">
+                        <iframe
+                            src="https://www.youtube.com/embed/<?= htmlspecialchars($ytId) ?>?autoplay=1&mute=1&controls=0&loop=1&playlist=<?= htmlspecialchars($ytId) ?>&modestbranding=1&rel=0&playsinline=1"
+                            title="Hero video"
+                            frameborder="0"
+                            allow="autoplay; encrypted-media; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <?php endif; ?>
+                    <?php endif; ?>
                     <div class="hero-overlay"></div>
                     <div class="container hero-content">
                         <span class="hero-badge"><?= htmlspecialchars($b['badge_text'] ?: $cfg('site_name', 'AI Tours and Travels')) ?></span>
@@ -1107,6 +1138,5 @@ $seoSchemas = [
 
 </body>
 </html>
-
 
 
