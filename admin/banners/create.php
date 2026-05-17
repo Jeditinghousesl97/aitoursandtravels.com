@@ -5,18 +5,46 @@ require_once __DIR__ . '/../includes/auth.php';
 
 $pdo    = getPDO();
 $errors = [];
+$schemaReady = true;
 
-if (!columnExists($pdo, 'hero_banners', 'badge_text')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN badge_text VARCHAR(150) DEFAULT NULL AFTER image_path");
+if (!function_exists('ensureHeroBannerMediaSchema')) {
+    function ensureHeroBannerMediaSchema(PDO $pdo): bool {
+        $queries = [
+            "ALTER TABLE hero_banners ADD COLUMN badge_text VARCHAR(150) DEFAULT NULL AFTER image_path",
+            "ALTER TABLE hero_banners ADD COLUMN media_type VARCHAR(20) NOT NULL DEFAULT 'image' AFTER image_path",
+            "ALTER TABLE hero_banners ADD COLUMN video_path VARCHAR(255) DEFAULT NULL AFTER media_type",
+            "ALTER TABLE hero_banners ADD COLUMN youtube_url VARCHAR(255) DEFAULT NULL AFTER video_path",
+        ];
+
+        foreach ($queries as $query) {
+            try {
+                if (str_contains($query, 'badge_text') && !columnExists($pdo, 'hero_banners', 'badge_text')) {
+                    $pdo->exec($query);
+                }
+                if (str_contains($query, 'media_type') && !columnExists($pdo, 'hero_banners', 'media_type')) {
+                    $pdo->exec($query);
+                }
+                if (str_contains($query, 'video_path') && !columnExists($pdo, 'hero_banners', 'video_path')) {
+                    $pdo->exec($query);
+                }
+                if (str_contains($query, 'youtube_url') && !columnExists($pdo, 'hero_banners', 'youtube_url')) {
+                    $pdo->exec($query);
+                }
+            } catch (Throwable $e) {
+                // Ignore and verify below to avoid HTTP 500 on restricted DB users.
+            }
+        }
+
+        return columnExists($pdo, 'hero_banners', 'badge_text')
+            && columnExists($pdo, 'hero_banners', 'media_type')
+            && columnExists($pdo, 'hero_banners', 'video_path')
+            && columnExists($pdo, 'hero_banners', 'youtube_url');
+    }
 }
-if (!columnExists($pdo, 'hero_banners', 'media_type')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN media_type VARCHAR(20) NOT NULL DEFAULT 'image' AFTER image_path");
-}
-if (!columnExists($pdo, 'hero_banners', 'video_path')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN video_path VARCHAR(255) DEFAULT NULL AFTER media_type");
-}
-if (!columnExists($pdo, 'hero_banners', 'youtube_url')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN youtube_url VARCHAR(255) DEFAULT NULL AFTER video_path");
+
+$schemaReady = ensureHeroBannerMediaSchema($pdo);
+if (!$schemaReady) {
+    $errors[] = 'Database schema update is required for video banners. Please run the migration (add media_type, video_path, youtube_url columns to hero_banners) or grant ALTER permission temporarily.';
 }
 
 function toYouTubeEmbed(string $url): string {
@@ -102,13 +130,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $maxOrder = $pdo->query('SELECT COALESCE(MAX(sort_order),0) FROM hero_banners')->fetchColumn();
-        $pdo->prepare('
-            INSERT INTO hero_banners (badge_text, heading, subheading, image_path, media_type, video_path, youtube_url, btn_label, btn_link, sort_order, is_active)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?)
-        ')->execute([$badge_text ?: null, $heading, $subheading ?: null, $image_path, $media_type, $video_path, $youtube_url, $btn_label, $btn_link, $maxOrder + 1, $is_active]);
-        header('Location: index.php?created=1');
-        exit;
+        try {
+            $maxOrder = $pdo->query('SELECT COALESCE(MAX(sort_order),0) FROM hero_banners')->fetchColumn();
+            $pdo->prepare('
+                INSERT INTO hero_banners (badge_text, heading, subheading, image_path, media_type, video_path, youtube_url, btn_label, btn_link, sort_order, is_active)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?)
+            ')->execute([$badge_text ?: null, $heading, $subheading ?: null, $image_path, $media_type, $video_path, $youtube_url, $btn_label, $btn_link, $maxOrder + 1, $is_active]);
+            header('Location: index.php?created=1');
+            exit;
+        } catch (Throwable $e) {
+            $errors[] = 'Failed to save banner: ' . $e->getMessage();
+        }
     }
 }
 

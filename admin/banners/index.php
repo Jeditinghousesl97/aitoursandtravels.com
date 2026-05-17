@@ -4,19 +4,34 @@ require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 
 $pdo = getPDO();
+$schemaReady = true;
 
-if (!columnExists($pdo, 'hero_banners', 'badge_text')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN badge_text VARCHAR(150) DEFAULT NULL AFTER image_path");
+if (!function_exists('ensureHeroBannerMediaSchema')) {
+    function ensureHeroBannerMediaSchema(PDO $pdo): bool {
+        try {
+            if (!columnExists($pdo, 'hero_banners', 'badge_text')) {
+                $pdo->exec("ALTER TABLE hero_banners ADD COLUMN badge_text VARCHAR(150) DEFAULT NULL AFTER image_path");
+            }
+            if (!columnExists($pdo, 'hero_banners', 'media_type')) {
+                $pdo->exec("ALTER TABLE hero_banners ADD COLUMN media_type VARCHAR(20) NOT NULL DEFAULT 'image' AFTER image_path");
+            }
+            if (!columnExists($pdo, 'hero_banners', 'video_path')) {
+                $pdo->exec("ALTER TABLE hero_banners ADD COLUMN video_path VARCHAR(255) DEFAULT NULL AFTER media_type");
+            }
+            if (!columnExists($pdo, 'hero_banners', 'youtube_url')) {
+                $pdo->exec("ALTER TABLE hero_banners ADD COLUMN youtube_url VARCHAR(255) DEFAULT NULL AFTER video_path");
+            }
+        } catch (Throwable $e) {
+            // Avoid HTTP 500 on restricted DB users.
+        }
+
+        return columnExists($pdo, 'hero_banners', 'badge_text')
+            && columnExists($pdo, 'hero_banners', 'media_type')
+            && columnExists($pdo, 'hero_banners', 'video_path')
+            && columnExists($pdo, 'hero_banners', 'youtube_url');
+    }
 }
-if (!columnExists($pdo, 'hero_banners', 'media_type')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN media_type VARCHAR(20) NOT NULL DEFAULT 'image' AFTER image_path");
-}
-if (!columnExists($pdo, 'hero_banners', 'video_path')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN video_path VARCHAR(255) DEFAULT NULL AFTER media_type");
-}
-if (!columnExists($pdo, 'hero_banners', 'youtube_url')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN youtube_url VARCHAR(255) DEFAULT NULL AFTER video_path");
-}
+$schemaReady = ensureHeroBannerMediaSchema($pdo);
 
 function youtubeThumb(?string $url): string {
     $url = (string)$url;
@@ -92,6 +107,12 @@ include __DIR__ . '/../includes/header.php';
   <div class="alert alert-success alert-dismissible fade show"><i class="bi bi-check-circle me-1"></i> Banner updated successfully.<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
 <?php elseif (isset($_GET['deleted'])): ?>
   <div class="alert alert-success alert-dismissible fade show"><i class="bi bi-check-circle me-1"></i> Banner deleted.<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+<?php endif; ?>
+<?php if (!$schemaReady): ?>
+  <div class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-1"></i>
+    Video banner columns are missing and could not be auto-created. Please run DB migration for <code>hero_banners</code> (add <code>media_type</code>, <code>video_path</code>, <code>youtube_url</code>).
+  </div>
 <?php endif; ?>
 
 <div class="alert alert-info d-flex align-items-center gap-2 py-2">

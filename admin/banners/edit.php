@@ -5,19 +5,34 @@ require_once __DIR__ . '/../includes/auth.php';
 
 $pdo = getPDO();
 $id  = (int)($_GET['id'] ?? 0);
+$schemaReady = true;
 
-if (!columnExists($pdo, 'hero_banners', 'badge_text')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN badge_text VARCHAR(150) DEFAULT NULL AFTER image_path");
+if (!function_exists('ensureHeroBannerMediaSchema')) {
+    function ensureHeroBannerMediaSchema(PDO $pdo): bool {
+        try {
+            if (!columnExists($pdo, 'hero_banners', 'badge_text')) {
+                $pdo->exec("ALTER TABLE hero_banners ADD COLUMN badge_text VARCHAR(150) DEFAULT NULL AFTER image_path");
+            }
+            if (!columnExists($pdo, 'hero_banners', 'media_type')) {
+                $pdo->exec("ALTER TABLE hero_banners ADD COLUMN media_type VARCHAR(20) NOT NULL DEFAULT 'image' AFTER image_path");
+            }
+            if (!columnExists($pdo, 'hero_banners', 'video_path')) {
+                $pdo->exec("ALTER TABLE hero_banners ADD COLUMN video_path VARCHAR(255) DEFAULT NULL AFTER media_type");
+            }
+            if (!columnExists($pdo, 'hero_banners', 'youtube_url')) {
+                $pdo->exec("ALTER TABLE hero_banners ADD COLUMN youtube_url VARCHAR(255) DEFAULT NULL AFTER video_path");
+            }
+        } catch (Throwable $e) {
+            // Avoid HTTP 500 on restricted DB users.
+        }
+
+        return columnExists($pdo, 'hero_banners', 'badge_text')
+            && columnExists($pdo, 'hero_banners', 'media_type')
+            && columnExists($pdo, 'hero_banners', 'video_path')
+            && columnExists($pdo, 'hero_banners', 'youtube_url');
+    }
 }
-if (!columnExists($pdo, 'hero_banners', 'media_type')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN media_type VARCHAR(20) NOT NULL DEFAULT 'image' AFTER image_path");
-}
-if (!columnExists($pdo, 'hero_banners', 'video_path')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN video_path VARCHAR(255) DEFAULT NULL AFTER media_type");
-}
-if (!columnExists($pdo, 'hero_banners', 'youtube_url')) {
-    $pdo->exec("ALTER TABLE hero_banners ADD COLUMN youtube_url VARCHAR(255) DEFAULT NULL AFTER video_path");
-}
+$schemaReady = ensureHeroBannerMediaSchema($pdo);
 
 function toYouTubeEmbed(string $url): string {
     $url = trim($url);
@@ -41,6 +56,9 @@ if (!$banner) {
 }
 
 $errors = [];
+if (!$schemaReady) {
+    $errors[] = 'Database schema update is required for video banners. Please run the migration (add media_type, video_path, youtube_url columns to hero_banners) or grant ALTER permission temporarily.';
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $badge_text = trim($_POST['badge_text'] ?? '');
@@ -130,11 +148,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $youtube_url = null;
         }
 
-        $pdo->prepare('
-            UPDATE hero_banners
-            SET badge_text=?, heading=?, subheading=?, image_path=?, media_type=?, video_path=?, youtube_url=?, btn_label=?, btn_link=?, is_active=?
-            WHERE id=?
-        ')->execute([$badge_text ?: null, $heading, $subheading ?: null, $image_path, $media_type, $video_path, $youtube_url, $btn_label, $btn_link, $is_active, $id]);
+        try {
+            $pdo->prepare('
+                UPDATE hero_banners
+                SET badge_text=?, heading=?, subheading=?, image_path=?, media_type=?, video_path=?, youtube_url=?, btn_label=?, btn_link=?, is_active=?
+                WHERE id=?
+            ')->execute([$badge_text ?: null, $heading, $subheading ?: null, $image_path, $media_type, $video_path, $youtube_url, $btn_label, $btn_link, $is_active, $id]);
+        } catch (Throwable $e) {
+            $errors[] = 'Failed to update banner: ' . $e->getMessage();
+        }
+
+        if (!empty($errors)) {
+            $banner = array_merge($banner, $_POST);
+            $banner['image_path'] = $image_path;
+            $banner['video_path'] = $video_path;
+            $banner['youtube_url'] = $youtube_url;
+            $banner['media_type'] = $media_type;
+            goto end_post;
+        }
 
         if ($media_type !== 'image' && !empty($banner['image_path'])) {
             $old = __DIR__ . '/../../' . $banner['image_path'];
@@ -154,6 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $banner['video_path'] = $video_path;
     $banner['youtube_url'] = $youtube_url;
     $banner['media_type'] = $media_type;
+    end_post:
 }
 
 $pageTitle = 'Edit Banner';
