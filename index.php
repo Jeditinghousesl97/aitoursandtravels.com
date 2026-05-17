@@ -152,7 +152,7 @@ $seoSchemas = [
                      <?= $mediaType === 'image' ? "style=\"background-image: url('" . htmlspecialchars($b['image_path'] ? site_url($b['image_path']) : 'assets/images/hero/slide-1.jpg') . "')\"" : '' ?>>
                     <?php if ($mediaType === 'video_upload' && !empty($b['video_path'])): ?>
                     <div class="hero-media">
-                        <video autoplay muted loop playsinline preload="metadata">
+                        <video autoplay muted loop playsinline preload="none" poster="<?= htmlspecialchars($b['image_path'] ? site_url($b['image_path']) : 'assets/images/hero/slide-1.jpg') ?>">
                             <source src="<?= htmlspecialchars(site_url($b['video_path'])) ?>">
                         </video>
                     </div>
@@ -161,7 +161,7 @@ $seoSchemas = [
                     <?php if ($ytId !== ''): ?>
                     <div class="hero-media">
                         <iframe
-                            src="https://www.youtube.com/embed/<?= htmlspecialchars($ytId) ?>?autoplay=1&mute=1&controls=0&loop=1&playlist=<?= htmlspecialchars($ytId) ?>&modestbranding=1&rel=0&playsinline=1"
+                            data-src="https://www.youtube.com/embed/<?= htmlspecialchars($ytId) ?>?autoplay=1&mute=1&controls=0&loop=1&playlist=<?= htmlspecialchars($ytId) ?>&modestbranding=1&rel=0&playsinline=1"
                             title="Hero video"
                             frameborder="0"
                             allow="autoplay; encrypted-media; picture-in-picture"
@@ -904,12 +904,42 @@ $seoSchemas = [
     AOS.init({ duration: 700, once: true });
 
     // Swipers
-    new Swiper('.hero-swiper', {
+    function updateHeroMedia(swiper) {
+        swiper.slides.forEach((slide, idx) => {
+            const isActive = idx === swiper.activeIndex;
+            const video = slide.querySelector('video');
+            const iframe = slide.querySelector('iframe[data-src], iframe[src]');
+
+            if (video) {
+                if (isActive) {
+                    video.preload = 'metadata';
+                    const playPromise = video.play();
+                    if (playPromise && typeof playPromise.catch === 'function') {
+                        playPromise.catch(() => {});
+                    }
+                } else {
+                    video.pause();
+                    video.preload = 'none';
+                }
+            }
+
+            if (iframe && isActive && !iframe.getAttribute('src')) {
+                iframe.setAttribute('src', iframe.getAttribute('data-src') || '');
+            }
+        });
+    }
+
+    const heroSwiper = new Swiper('.hero-swiper', {
         loop: true, autoplay: { delay: 5000, disableOnInteraction: false },
         pagination: { el: '.hero-pagination', clickable: true },
         navigation: { nextEl: '.hero-next', prevEl: '.hero-prev' },
-        effect: 'fade', fadeEffect: { crossFade: true }
+        effect: 'fade', fadeEffect: { crossFade: true },
+        on: {
+            init(swiper) { updateHeroMedia(swiper); },
+            slideChangeTransitionStart(swiper) { updateHeroMedia(swiper); }
+        }
     });
+    updateHeroMedia(heroSwiper);
     new Swiper('.packages-swiper', {
         loop: true, slidesPerView: 1, spaceBetween: 24,
         pagination: { el: '.packages-pagination', clickable: true },
@@ -1138,5 +1168,3 @@ $seoSchemas = [
 
 </body>
 </html>
-
-
