@@ -130,6 +130,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
+        if ($media_type !== 'image' && empty($image_path)) {
+            // Backward compatibility: some databases keep image_path NOT NULL.
+            $image_path = 'assets/images/hero/slide-1.jpg';
+        }
         try {
             $maxOrder = $pdo->query('SELECT COALESCE(MAX(sort_order),0) FROM hero_banners')->fetchColumn();
             $pdo->prepare('

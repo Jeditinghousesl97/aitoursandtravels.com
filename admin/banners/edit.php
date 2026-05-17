@@ -139,7 +139,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         if ($media_type !== 'image') {
-            $image_path = null;
+            // Backward compatibility: some databases keep image_path NOT NULL.
+            $image_path = $image_path ?: 'assets/images/hero/slide-1.jpg';
         }
         if ($media_type !== 'video_upload') {
             $video_path = null;
